@@ -1,0 +1,9 @@
+{
+	"name": "dtf-trabfinal",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0285eab5-bb43-49de-b433-a8ec8b34f886",
+		"tenantId": "11dbbfe2-89b8-4549-be10-cec364e59551"
+	}
+}
