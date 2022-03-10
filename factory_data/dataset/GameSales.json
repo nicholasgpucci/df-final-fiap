@@ -1,0 +1,62 @@
+{
+	"name": "GameSales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer_TrabFinal",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Platform",
+				"type": "varchar"
+			},
+			{
+				"name": "Year",
+				"type": "varchar"
+			},
+			{
+				"name": "Genre",
+				"type": "varchar"
+			},
+			{
+				"name": "Publisher",
+				"type": "varchar"
+			},
+			{
+				"name": "NA_Sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "EU_Sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "JP_Sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Other_Sales",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "Global_Sales",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "sales"
+		}
+	}
+}
