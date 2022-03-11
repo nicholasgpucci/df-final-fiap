@@ -1,0 +1,74 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "GameSales",
+						"type": "DatasetReference"
+					},
+					"name": "GameSales"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquetv3",
+						"type": "DatasetReference"
+					},
+					"name": "Output"
+				}
+			],
+			"transformations": [
+				{
+					"name": "TratandoValores"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Name as string,",
+				"          Platform as string,",
+				"          Year as string,",
+				"          Genre as string,",
+				"          Publisher as string,",
+				"          NA_Sales as double,",
+				"          EU_Sales as double,",
+				"          JP_Sales as double,",
+				"          Other_Sales as double,",
+				"          Global_Sales as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> GameSales",
+				"GameSales derive(NA_Sales = NA_Sales/100,",
+				"          EU_Sales = EU_Sales/100,",
+				"          JP_Sales = JP_Sales/100,",
+				"          Other_Sales = Other_Sales/100,",
+				"          Global_Sales = Global_Sales/100) ~> TratandoValores",
+				"TratandoValores sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Name as string,",
+				"          Platform as string,",
+				"          Year as string,",
+				"          Genre as string,",
+				"          Publisher as string,",
+				"          NA_Sales as double,",
+				"          EU_Sales as double,",
+				"          JP_Sales as double,",
+				"          Other_Sales as double,",
+				"          Global_Sales as double",
+				"     ),",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Output"
+			]
+		}
+	}
+}

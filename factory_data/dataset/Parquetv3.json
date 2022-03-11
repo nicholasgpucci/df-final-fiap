@@ -1,0 +1,60 @@
+{
+	"name": "Parquetv3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorageTrabFinal",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "gamecontainer"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "Name",
+				"type": "UTF8"
+			},
+			{
+				"name": "Platform",
+				"type": "UTF8"
+			},
+			{
+				"name": "Year",
+				"type": "UTF8"
+			},
+			{
+				"name": "Genre",
+				"type": "UTF8"
+			},
+			{
+				"name": "Publisher",
+				"type": "UTF8"
+			},
+			{
+				"name": "NA_Sales",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "EU_Sales",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "JP_Sales",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Other_Sales",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "Global_Sales",
+				"type": "DOUBLE"
+			}
+		]
+	}
+}
